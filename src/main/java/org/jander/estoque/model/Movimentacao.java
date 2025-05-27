@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import org.jander.estoque.enums.Tipo_Movimentacao;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,11 +12,16 @@ public class Movimentacao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Enumerated(EnumType.STRING)
     private Tipo_Movimentacao tipo;
+
+    @ManyToOne
+    private Produto produto;
     private double valor;
     private LocalDateTime dataVenda;
     private Integer quantidade;
+
 
 
     public Long getId() {
@@ -34,6 +38,14 @@ public class Movimentacao implements Serializable {
 
     public void setTipo(Tipo_Movimentacao tipo) {
         this.tipo = tipo;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     public double getValor() {
@@ -59,4 +71,6 @@ public class Movimentacao implements Serializable {
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
+
+
 }
