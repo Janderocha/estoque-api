@@ -48,7 +48,6 @@ class ProdutoServiceTest {
     @Test
     void atualizarProduto_deveRetornarProdutoDTO() {
         Produto produto = new Produto(1L, "Produto Teste", "Descrição", TipoProduto.MOVEL, 100.0, 10);
-        when(produtoRepository.findById(1L)).thenReturn(Optional.of(produto));
         when(produtoRepository.save(any(Produto.class))).thenReturn(produto);
 
         ProdutoDTO resultado = produtoService.atualizarProduto(1L, new ProdutoDTO(1L, "Produto Teste", "Descrição", TipoProduto.MOVEL, 100.0, 10));
