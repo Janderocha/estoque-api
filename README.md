@@ -29,11 +29,14 @@ API REST para gerenciamento de produtos em estoque, desenvolvida como parte de u
 ### Rodando localmente
 
 Clone o repositório:
+```bash
 git clone https://github.com/Janderocha/estoque-api.git
-
+```
+Rode a Aplicacao Localmente
+```bash
 cd estoque-api
-
 ./mvnw spring-boot:run
+```
 
 a aplicação estará disponível em http://localhost:8081
 
