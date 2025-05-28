@@ -30,18 +30,13 @@ public class ProdutoController {
     }
 
     @Operation(summary = "Cria um novo produto")
-    @ApiResponses({
-            @ApiResponse(responseCode = "404", description = "Recurso não encontrado"),
-    })
     @PostMapping
     public ResponseEntity<ProdutoDTO> criarProduto(@RequestBody ProdutoDTO produtoDTO) {
         ProdutoDTO novoProduto = produtoService.criarProduto(produtoDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
     }
     @Operation(summary = "Atualiza um produto já existente um novo produto")
-    @ApiResponses({
-            @ApiResponse(responseCode = "404", description = "Recurso não encontrado"),
-    })
+
     @PutMapping("/{id}")
     public ResponseEntity<ProdutoDTO> atualizarProduto(@PathVariable Long id, @RequestBody ProdutoDTO produtoDTO) {
         ProdutoDTO produtoAtualizado = produtoService.atualizarProduto(id, produtoDTO);
@@ -49,9 +44,6 @@ public class ProdutoController {
     }
 
     @Operation(summary = "Busca um  produto Pelo ID")
-    @ApiResponses({
-            @ApiResponse(responseCode = "404", description = "Recurso não encontrado"),
-    })
     @GetMapping("/{id}")
     public ResponseEntity<ProdutoDTO> obterProdutoPorId(@PathVariable Long id) {
         ProdutoDTO produto = produtoService.obterProdutoPorId(id);
