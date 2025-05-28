@@ -25,7 +25,7 @@ public class Movimentacao implements Serializable {
     @ManyToOne
     private Produto produto;
     private double valor;
-    private LocalDateTime dataVenda;
+    private LocalDateTime data;
     private Integer quantidade;
 
 

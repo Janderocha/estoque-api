@@ -19,4 +19,6 @@ public interface MovimentacaoRepository extends JpaRepository<Movimentacao, Long
 
     @Query("SELECT SUM(m.valor) FROM Movimentacao m WHERE m.produto.id = :produtoId AND m.tipo = 'SAIDA'")
     double findValorVendidaByProdutoId(@Param("produtoId") Long produtoId);
+
+    void deleteAllByProdutoId(Long id);
 }
