@@ -33,6 +33,7 @@ git clone https://github.com/Janderocha/estoque-api.git
 cd estoque-api
 
 ./mvnw spring-boot:run
+
 a aplicação estará disponível em http://localhost:8081
 
 Para informação sobre os endpoints:
