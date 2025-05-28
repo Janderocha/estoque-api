@@ -2,7 +2,7 @@ package org.jander.estoque.model;
 
 
 import jakarta.persistence.*;
-import org.jander.estoque.enums.Tipo_Movimentacao;
+import org.jander.estoque.enums.TipoMovimentacao;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -14,7 +14,7 @@ public class Movimentacao implements Serializable {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private Tipo_Movimentacao tipo;
+    private TipoMovimentacao tipo;
 
     @ManyToOne
     private Produto produto;
@@ -32,11 +32,11 @@ public class Movimentacao implements Serializable {
         this.id = id;
     }
 
-    public Tipo_Movimentacao getTipo() {
+    public TipoMovimentacao getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipo_Movimentacao tipo) {
+    public void setTipo(TipoMovimentacao tipo) {
         this.tipo = tipo;
     }
 

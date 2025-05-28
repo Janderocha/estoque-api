@@ -1,6 +1,6 @@
 package org.jander.estoque.enums;
 
-public enum Tipo_Movimentacao {
+public enum TipoMovimentacao {
     ENTRADA,
     SAIDA
 
