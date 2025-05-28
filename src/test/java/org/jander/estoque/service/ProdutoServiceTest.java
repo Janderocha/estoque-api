@@ -29,9 +29,7 @@ class ProdutoServiceTest {
         ProdutoDTO dto = new ProdutoDTO(1L, "Produto Teste", "Descrição", TipoProduto.MOVEL, 100.0, 10);
         Produto produto = new Produto(1L, "Produto Teste", "Descrição", TipoProduto.MOVEL, 100.0, 10);
         when(produtoRepository.save(any(Produto.class))).thenReturn(produto);
-
         ProdutoDTO resultado = produtoService.criarProduto(dto);
-
         assertNotNull(resultado);
         verify(produtoRepository).save(any(Produto.class));
     }
