@@ -30,6 +30,7 @@ API REST para gerenciamento de produtos em estoque, desenvolvida como parte de u
 
 Clone o repositório:
 git clone https://github.com/Janderocha/estoque-api.git
+
 cd estoque-api
 
 ./mvnw spring-boot:run
