@@ -8,11 +8,11 @@ import org.jander.estoque.dto.ProdutoRelatorioDTO;
 import org.jander.estoque.model.Movimentacao;
 import org.jander.estoque.model.Produto;
 import org.jander.estoque.service.EstoqueService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:5173")
@@ -22,7 +22,6 @@ public class EstoqueController {
 
     private final EstoqueService estoqueService;
 
-    @Autowired
     public EstoqueController(EstoqueService estoqueService) {
         this.estoqueService = estoqueService;
     }
@@ -98,9 +97,15 @@ public class EstoqueController {
             @ApiResponse(responseCode = "400", description = "Dados inválidos")
     })
     @PostMapping("/movimentacoes")
-    public ResponseEntity<Movimentacao> movimentarProduto(@RequestBody Movimentacao movimentacao) {
-        Movimentacao mov = estoqueService.movimentarProduto(movimentacao);
-        return ResponseEntity.ok(mov);
+    public ResponseEntity<?> movimentarProduto(@RequestBody Movimentacao movimentacao) {
+        try {
+            Movimentacao novaMovimentacao = estoqueService.movimentarProduto(movimentacao);
+            return ResponseEntity.ok(novaMovimentacao);
+        }catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }catch (DateTimeParseException ex) {
+            return ResponseEntity.badRequest().body("Data inválida");
+        }
     }
 
     @Operation(summary = "Consulta o lucro de um produto")

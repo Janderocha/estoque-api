@@ -57,12 +57,10 @@ public class EstoqueService {
     public Movimentacao movimentarProduto(Movimentacao movimentacao) {
         Produto produto = movimentacao.getProduto();
         if (movimentacao.getTipo() == TipoMovimentacao.ENTRADA) {
-            // Lógica para adicionar produto ao estoque
             produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() + movimentacao.getQuantidade());
             movimentacaoRepository.save(movimentacao);
             produtoRepository.save(produto);
         } else if (movimentacao.getTipo() == TipoMovimentacao.SAIDA) {
-            // Lógica para remover produto do estoque
             if (produto.getQuantidadeEstoque() >= movimentacao.getQuantidade()) {
                 produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - movimentacao.getQuantidade());
                 movimentacaoRepository.save(movimentacao);
