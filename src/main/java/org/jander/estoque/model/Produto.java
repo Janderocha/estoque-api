@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.jander.estoque.enums.TipoProduto;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,9 +25,9 @@ public class Produto implements Serializable {
     private double valor;
     private Integer quantidadeEstoque;
 
+
     public Produto(long l, String produtoTeste, int i) {
     }
-
 
 
 
